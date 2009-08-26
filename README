@@ -1,0 +1,11 @@
+My first go at a rails template - completely created for my own needs.
+
+It installs Haml, Sass, Compass, Authlogic, Cucumber, Webrat and RSpec. Compass is configured to use the Blueprint CSS framework.
+
+Capistrano is installed and configured if needed.
+
+Furthermore is rails being frozen, and an initial commit to a git repo is performed.
+
+The way git and Capistrano is configured will most likely only work on a server where users and disk layout is organised like on my server.
+
+The template is however pretty simple and understandable and easy to modify to other needs.
