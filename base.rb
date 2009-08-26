@@ -1,5 +1,5 @@
 @app_name = @root.split('/').last.strip
-@base_path = "/Users/rasmusgrouleff/dev/rails-templates"
+@base_path = "http://github.com/rbgrouleff/rails_template.git"
 @git_server = ask("What is the hostname of your git server?")
 @git_repo = "git@#{@git_server}:#{@app_name}.git"
 
