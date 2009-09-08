@@ -18,8 +18,8 @@ route "map.resources :users"
 generate :session, "user_session"
 generate :controller, "UserSessions", "new"
 
-run "rm app/controllers/users_sessions_controller.rb"
-file "app/controllers/users_sessions_controller.rb", <<-END
+run "rm app/controllers/user_sessions_controller.rb"
+file "app/controllers/user_sessions_controller.rb", <<-END
 class UserSessionsController < ApplicationController
   
   before_filter :require_no_user, :only => [:new, :create]

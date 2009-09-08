@@ -5,6 +5,14 @@
 @git_app_path = @git_path == "" ? "#{@app_name}.git" : "#{@git_path}/#{@app_name}.git"
 @git_repo = "git@#{@git_server}:#{@git_app_path}"
 
+@git_capistrano_text = <<-END
+
+set :repository, '#{@git_repo}'
+set :scm, :git
+END
+
+insert_into_file_after "config/deploy.rb", /set :application, '.+'/, @git_capistrano_text if @use_capistrano
+
 #Lets create some .gitignore in some directories, we don't want to be version controlled
 run "touch tmp/.gitignore log/.gitignore vendor/.gitignore"
 

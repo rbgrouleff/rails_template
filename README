@@ -1,11 +1,15 @@
 My first go at a rails template - completely created for my own needs.
 
-It installs Haml, Sass, Compass, Authlogic, Cucumber, Webrat and RSpec. Compass is configured to use the Blueprint CSS framework.
+By default it installs Haml, Sass and Compass and Compass is by default configured to use the Blueprint CSS framework.
 
-Capistrano is installed and configured if needed.
+The user is asked if Authlogic should be included as authentication framework. If the user chooses this, a User and a UserSession model is generated alongside with a UserSessionsController and some helper methods in the ApplicationController.
 
-Furthermore is rails being frozen, and an initial commit to a git repo is performed.
+The user is also asked whether Cucumber is needed. If so Cucumber, Webrat and RSpec will be added in the environments/test.rb and the gems will be installed.
 
-The way git and Capistrano is configured will most likely only work on a server where users and disk layout is organised like on my server.
+The user can choose to get Capistrano installed and configured as deployment tool - it is pretty much just a default config/deploy.rb that gets generated, and if the user wants to use git for SCM, the git repo is added to the deploy.rb. But keep in mind, that the file probably has to be edited afterwards.
 
-The template is however pretty simple and understandable and easy to modify to other needs.
+If git is chosen as SCM, there will be generated some sensible default ignore-files, and there will made an initial commit and push to a remote server configured by the user as the very last thing in the template.
+
+Before the commit rails and gems are being frozen into the app.
+
+I have no idea if somebody other than myself can use this template - and I don't know if it can be used without editing the template first. I hope though that I have made the template simple enough and I have scattered enough comments throughout it to make customizations somewhat easy to do.

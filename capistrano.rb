@@ -1,6 +1,6 @@
 @app_server = ask("What is the hostname of the server where Capistrano should deploy the application?")
 @db_server = ask("What is the hostname of the database server?")
-@deploy_path = ask("What is the path on the server where Capistrano should deploy the application to?")
+@deploy_path = ask("What is the path on the server where Capistrano should deploy the application to (the name of the application will be appended)?")
 @cap_username = ask("What user will be running the application on the server?")
 
 #Install Capistrano gem and capify the app
@@ -11,9 +11,6 @@ run "capify ."
 run "rm config/deploy.rb"
 file "config/deploy.rb", <<-END
 set :application, '#{@app_name}'
-
-set :repository, '#{@git_repo}'
-set :scm, :git
 
 set :deploy_to, '#{@deploy_path}/#{@app_name}'
 

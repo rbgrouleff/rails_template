@@ -1,3 +1,15 @@
+# Lets just start out with creating a small helper method
+def insert_into_file_after(file_name, pattern, text)
+  lines = ""
+  File.foreach file_name do |line|
+    lines << line
+    lines << text if line =~ pattern
+  end
+  File.open file_name, "w" do |file|
+    file.puts lines
+  end
+end
+
 @app_name = @root.split('/').last.strip
 @base_path = "http://github.com/rbgrouleff/rails_template.git"
 
@@ -23,6 +35,7 @@ run "rm public/index.html"
 run "haml --rails ."
 run "compass --rails -f blueprint . --css-dir=public/stylesheets --sass-dir=app/stylesheets"
 
-load_template "#{@base_path}/capistrano.rb" if yes?("Use Capistrano for deployment?")
+@use_capistrano = yes?("Use Capistrano for deployment?")
+load_template "#{@base_path}/capistrano.rb" if @use_capistrano
 
 load_template "#{@base_path}/git.rb" if yes?("Use git SCM?")
