@@ -22,9 +22,11 @@ log/*.log
 tmp/**/*
 config/database.yml
 db/*.sqlite3
-public/stylesheets/*.css
+#{@gitignore_extras.join("\n")}
 END
+
 git :init
 git :remote => "add origin #{@git_repo}"
-git :add => ".", :commit => '-m "initial commit"'
+git :add => "."
+git :commit => '-m "initial commit"'
 git :push => "origin master:refs/heads/master"

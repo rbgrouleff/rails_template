@@ -13,12 +13,15 @@ end
 @app_name = @root.split('/').last.strip
 @base_path = "http://github.com/rbgrouleff/rails_template.git"
 
+# If there are anything extra that needs to be ignored than the default stuff, then add the lines to this array
+@gitignore_extras = []
+
 #Gems needed
 gem 'haml'
-gem "chriseppstein-compass", :lib => 'compass', :version => '>= 0.8.10'
 
 load_template "#{@base_path}/cucumber.rb" if yes?("Use Cucumber for BDD?")
 load_template "#{@base_path}/authlogic.rb" if yes?("Use Authlogic?")
+load_template "#{@base_path}/compass.rb" if yes?("Use Compass (and Blueprint)?")
 
 #Install any missing gems
 rake "gems:install", :sudo => true
@@ -31,9 +34,8 @@ run "cp config/database.yml config/example_database.yml"
 #We want to define our own root mapping (please remember that)
 run "rm public/index.html"
 
-#Can't live without Haml, Compass and Blueprint
+#Can't live without Haml
 run "haml --rails ."
-run "compass --rails -f blueprint . --css-dir=public/stylesheets --sass-dir=app/stylesheets"
 
 @use_capistrano = yes?("Use Capistrano for deployment?")
 load_template "#{@base_path}/capistrano.rb" if @use_capistrano
