@@ -25,6 +25,7 @@ load_template "#{@base_path}/compass.rb" if yes?("Use Compass (and Blueprint)?")
 
 #Install any missing gems
 rake "gems:install", :sudo => true
+rake "gems:unpack"
 
 rake "rails:freeze:gems", :sudo => true
 
